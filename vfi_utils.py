@@ -187,11 +187,11 @@ def _generic_frame_loop(
         # Try to avoid a memory overflow by clearing cuda cache regularly
         if number_of_frames_processed_since_last_cleared_cuda_cache >= clear_cache_after_n_frames:
             print("Comfy-VFI: Clearing cache...", end=' ')
-            soft_empty_cache()
+            # soft_empty_cache()
             number_of_frames_processed_since_last_cleared_cuda_cache = 0
             print("Done cache clearing")
         
-        gc.collect()
+        # gc.collect()
     
     if final_logging:
         print(f"Comfy-VFI done! {len(output_frames)} frames generated at resolution: {output_frames[0].shape}")
@@ -201,7 +201,7 @@ def _generic_frame_loop(
     # clear cache for courtesy
     if final_logging:
         print("Comfy-VFI: Final clearing cache...", end = ' ')
-    soft_empty_cache()
+    # soft_empty_cache()
     if final_logging:
         print("Done cache clearing")
     return output_frames[:out_len]
